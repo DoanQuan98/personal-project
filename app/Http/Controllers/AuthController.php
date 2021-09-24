@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\loginRequest;
+use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,13 +12,13 @@ use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
-    //hiển thị form đăng nhập
+
     function showFormLogin()
     {
         return view('auth.login');
     }
-    //check tải khoản nếu đúng tài khoản sẽ được đưa vào trang home
-    function login(Request $request)
+
+    function login(loginRequest $request)
     {
         $data = $request->only('email', 'password');
         if (Auth::attempt($data)) {
@@ -26,13 +28,13 @@ class AuthController extends Controller
             return back();
         }
     }
-    //Hiển thị form đăng ký
+
     function showFormRegister()
     {
         return view('auth.register');
     }
-    //Viết hàm đăng ký rồi đưa lên db đăng ký thành công sẽ chuyển sang trang login
-    public function register(Request $request, User $user)
+
+    public function register(User $user,RegisterRequest $request)
     {
         $user->name = $request->name;
         $user->email = $request->email;
@@ -43,13 +45,13 @@ class AuthController extends Controller
         $user->save();
 
         Session::flash('success', 'Sign Up Success');
-        return redirect()->route('auth.login');
+        return redirect()->route('auth.showFormLogin');
     }
-    //hàm logout ra ngoài
+
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('auth.login');
+        return redirect()->route('auth.showFormLogin');
     }
 
 
