@@ -22,12 +22,15 @@
                                                    id="exampleInputEmail" aria-describedby="emailHelp"
                                                    placeholder="Enter Email Address..." name="email">
                                         </div>
+                                        @error('email')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
 
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
                                                    id="exampleInputPassword" placeholder="Password" name="password">
                                         </div>
-                                        @error('email')
+                                        @error('password')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                         <div class="form-group">
@@ -37,9 +40,7 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        @error('password')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
+
                                         <button class="btn btn-primary btn-user btn-block" type="submit">Login</button>
                                         <hr>
                                         <a href="index.html" class="btn btn-google btn-user btn-block">
@@ -58,7 +59,8 @@
                                         <a class="small" href="forgot-password.html">Forgot Password?</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="{{route('auth.showFormRegister')}}">Create an Account!</a>
+                                        <a class="small" href="{{route('auth.showFormRegister')}}">Create an
+                                            Account!</a>
                                     </div>
                                 </div>
                             </div>
