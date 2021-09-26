@@ -13,15 +13,10 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $fillable = ['name', 'email', 'password', 'address', 'role',];
+    protected $fillable = ['name', 'email', 'password', 'address', 'role', 'provider', 'provider_id'];
 
     public function isAdmin() {
         return $this->role == roleConstant::ADMIN;
-    }
-
-    public function isUser()
-    {
-        return $this->role == roleConstant::USER;
     }
 
 }

@@ -18,20 +18,11 @@ class UserSeeder extends Seeder
         $admin = new User();
         $admin->name = 'admin';
         $admin->email = 'admin@gmail.com';
-        $admin->password = Hash::make('admin');
+        $admin->password = Hash::make('123123');
         $admin->address = 'Công ty CP Codegym Việt Nam';
         $admin->phone = '0123456789';
         $admin->role = 'admin';
         $admin->save();
-
-        $user = new User();
-        $user->name = 'Đoàn Quân';
-        $user->email = 'NE.qkvt@gmail.com';
-        $user->password = Hash::make('123123');
-        $user->address = 'Công ty CP Codegym Việt Nam';
-        $user->phone = '0822222298';
-        $user->role = 'user';
-        $user->save();
     }
 
 

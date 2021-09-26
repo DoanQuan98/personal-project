@@ -5,6 +5,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SocialController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,8 @@ Route::get('register', [AuthController::class, 'showFormRegister'])->name('auth.
 Route::post('register', [AuthController::class, 'register'])->name('auth.register');
 Route::get('logout', [AuthController::class, 'logout'])->name('auth.logout');
 Route::get('blog/{id}', [BlogController::class, 'showFormBlog'])->name('blog');
+Route::get('/auth/redirect/{provider}', [SocialController::class, 'redirect']);
+Route::get('/callback/{provider}', [SocialController::class, 'callback']);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('home', [HomeController::class, 'index'])->name('home');
