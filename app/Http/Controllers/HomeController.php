@@ -13,11 +13,4 @@ class HomeController extends Controller
         $posts = Post::all();
         return view('home.home', compact('posts'));
     }
-
-    public function destroy($id)
-    {
-        $post = Post::findOrFail($id);
-        $post->delete();
-        return redirect()->route('home');;
-    }
 }

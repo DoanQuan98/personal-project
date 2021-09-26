@@ -26,6 +26,7 @@ class RegisterRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required|email',
+            'avatar' => 'required',
             'password' => 'required',
             'address' => 'required',
             'phone' => 'required',
@@ -37,6 +38,7 @@ class RegisterRequest extends FormRequest
         return [
             'name.required' => 'Name cannot be left blank',
             'email.required' => 'Email cannot be left blank',
+            'avatar' => 'Avatar cannot be left blank',
             'email.email' => 'Incorrect email format',
             'password.required' => 'Password cannot be left blank',
             'address.required' => 'The address cannot be left blank',

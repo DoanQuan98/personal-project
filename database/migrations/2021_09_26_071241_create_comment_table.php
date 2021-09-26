@@ -13,7 +13,13 @@ class CreateCommentTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('comment', function (Blueprint $table) {
+            $table->id();
+            $table->text('comment')->nullable();
+            $table->bigInteger('user_id')->unsigned()->nullable();
+            $table->bigInteger('post_id')->unsigned();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +29,6 @@ class CreateCommentTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('comment');
     }
 }
