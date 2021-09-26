@@ -21,6 +21,13 @@
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                                 <div class="form-group">
+                                    <label class="text-dark">Avatar</label>
+                                    <input type="file" class="form-control" name="image">
+                                </div>
+                                @error('image')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                                <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="exampleInputEmail"
                                            placeholder="Email Address" name="email">
                                 </div>
