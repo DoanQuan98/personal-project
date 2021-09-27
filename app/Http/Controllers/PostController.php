@@ -15,21 +15,14 @@ class PostController extends Controller
 
     public function post(Request $request, Post $post)
     {
+        $path= $request->file('image')->store('images','public');
+        $post->image = $path;
+
         $post->title = $request->title;
-        if($request->hasFile('image')){
-            $path= $request->file('image')->store('image','public');
-            $post->image = $path;
-        }
         $post->purport = $request->purport;
         $post->user_id = $request->user_id;
         $post->save();
         return redirect()->route('home');
     }
 
-    public function destroy($id)
-    {
-        $post = Post::findOrFail($id);
-        $post->delete();
-        return redirect()->back();
-    }
 }

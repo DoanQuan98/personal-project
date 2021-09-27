@@ -1,7 +1,7 @@
 @extends('home.layout.master')
 @section('content')
     <div class="container">
-        <form method="post" action="{{route('auth.post')}}">
+        <form method="post" action="{{route('auth.post')}}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="exampleFormControlInput1">Title</label>

@@ -1,14 +1,22 @@
 @extends('home.layout.master')
 @section('content')
-    <header class="masthead" style="background-image: {{asset('storage/'.$post->image) }}">
+
+    <header class="masthead" style="background-image: url('{{asset('storage/' . $post->image)}}'); position: relative;
+        margin-bottom: 3rem;
+        padding-top: calc(8rem + 57px);
+        padding-bottom: 8rem;
+        background-color: darkslateblue;
+        background-size: cover;
+        background-attachment: scroll;">
         <div class="container position-relative px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <div class="post-heading">
-                        <h1>{{$post->title}}</h1>
-                        <span class="meta"> Made in by
+                        <h1 style="color: whitesmoke">{{$post->title}}</h1>
+                        <span class="meta" style="color: navajowhite"> Made in by
                                 <a href="">{{$post->user->name}}
                                     {{$post->create_at}}</a>
+                            {{$post->created_at}}
                             </span>
                     </div>
                 </div>

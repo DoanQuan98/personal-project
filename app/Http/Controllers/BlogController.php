@@ -10,10 +10,8 @@ class BlogController extends Controller
 {
 
     function showFormBlog($id) {
-//        dd(123);
         $post = Post::find($id);
         $comments = Comment::where('post_id', $id)->get();
-
         return view('home.blog', compact('post', 'comments'));
     }
 }
