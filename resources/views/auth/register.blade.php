@@ -11,7 +11,7 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
-                            <form class="user" method="post" action="{{route('auth.register')}}">
+                            <form class="user" method="post" action="{{route('auth.register')}}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-user" id="exampleFirstName"
@@ -22,9 +22,9 @@
                                 @enderror
                                 <div class="form-group">
                                     <label class="text-dark">Avatar</label>
-                                    <input type="file" class="form-control" name="image">
+                                    <input type="file" class="form-control" name="avatar">
                                 </div>
-                                @error('image')
+                                @error('avatar')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                                 <div class="form-group">

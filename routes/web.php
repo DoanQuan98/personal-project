@@ -20,7 +20,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('search', [HomeController::class, 'getSearch']);
+Route::post('search/name', [HomeController::class, 'getSearchAjax'])->name('search');
 
 Route::get('/', [AuthController::class, 'showFormLogin'])->name('auth.showFormLogin');
 Route::post('login', [AuthController::class, 'login'])->name('auth.login');
@@ -35,7 +36,7 @@ Route::get('/callback/{provider}', [SocialController::class, 'callback']);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('home', [HomeController::class, 'index'])->name('home');
-    Route::get('post/delete/{id}', [PostController::class, 'destroy'])->name('delete.post');
+    Route::get('post/delete/{id}', [HomeController::class, 'destroy'])->name('delete.post');
 
     Route::get('post', [PostController::class, 'showFormPost']);
     Route::post('post', [PostController::class, 'post'])->name('auth.post');

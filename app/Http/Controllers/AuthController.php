@@ -36,16 +36,16 @@ class AuthController extends Controller
 
     public function register(User $user,RegisterRequest $request)
     {
+        $path = $request->file('avatar')->store('images', 'public');
+        $user->avatar = $path;
+
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->phone = $request->phone;
         $user->address = $request->address;
         $user->role = $request->role;
-        if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('image', 'public');
-            $user->avatar = $path;
-        }
+
         $user->save();
 
         Session::flash('success', 'Sign Up Success');
